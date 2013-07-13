@@ -1,3 +1,4 @@
+<!---
 <cfset util = CreateObject('component', 'controllers.FormUtilities').init(true)>
 
 <cfdump var="#form#">
@@ -13,24 +14,37 @@
 
 </cfoutput>
 
+--->
 <cfscript>
 
-counter = 1;
-while (structKeyExists(form, "directorId[#counter#]")) {
-	transaction {
-	director = EntityLoadByPk("Director", #counter#);
-	if (!structKeyExists(variables, "director")) {
-		director = EntityNew("Director");
+writeDump(form);
+transaction {
+	count = arrayLen(form.director);
+	writeOutput(count);
+
+	for (counter = 1; counter LTE count; counter += 1) {
+		try {
+
+		director = entityNew("Director");
+
+		writeOutput(form.director[#counter#].firstname);
+		director.setFirstName(form.director[#counter#].firstname);
+		director.setLastName(form.director[#counter#].lastName);
+		entitySave(director);
+		} catch (any e) {
+
+
 		}
-	director.setFirstName(firstName[#counter#]);
-	director.setLastName(lastName[#counter#]);
-	entitySave(director);
-	transactionCommit();
+
 	}
-	writeOutput(counter);
-	writeDump(director);
-	counter = counter + 1;
+
+transactionCommit();
 }
 
 
+
+
+
 </cfscript>
+
+<cfoutput><a href="index.cfm">index.cfm</a></cfoutput>

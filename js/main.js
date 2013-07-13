@@ -12,16 +12,26 @@ $(".addDirector").click(function () {
 	}
 
 	$('tbody.directorList').append('<tr>' +
-		'<td><input type="hidden" name="directorId[' + newIdNum + ']" value="' + newIdNum + '"></td>' +
-		'<td><input type="text" name="firstName[' + newIdNum + ']"></td>' +
-		'<td><input type="text" name="lastName[' + newIdNum + ']"></td>' +
-		'<td><div class="ui-state-default ui-corner-all" title="Delete">' +
+		'<td><input type="hidden" name="director.id" value="' + newIdNum + '"></td>' +
+		'<td><input type="text" name="director.firstName"></td>' +
+		'<td><input type="text" name="director.lastName"></td>' +
+		'<td><div class="deleteDirector ui-state-default ui-corner-all" title="Delete">' +
 		'<span class="ui-icon ui-icon-circle-close"></span></div>' +
 		'</tr>');
 
+	$(".deleteDirector").click(function () {
+		$(this).parent().parent().remove();
+	});
+	
 	return false;
 
 });
+
+
+
+
+
+
 
 $(".addMovie").click(function () {
 
