@@ -1,4 +1,9 @@
 <cfinclude template="../layout/header.cfm">
+<cfoutput>
+
+<cfdump var="#APPLICATION#">
+
+</cfoutput>
 
 <h2>Directors</h2>
 <cfform name="createDirector" action="../formHandler.cfm" method="post">

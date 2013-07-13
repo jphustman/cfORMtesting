@@ -11,10 +11,12 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
+<cfoutput>
+        <link rel="stylesheet" href="#CGI.HTTP_REFERER#css/normalize.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <link rel="stylesheet" href="#CGI.HTTP_REFERER#css/main.css">
+        <script src="#CGI.HTTP_REFERER#js/vendor/modernizr-2.6.2.min.js"></script>
+</cfoutput>
     </head>
     <body>
         <!--[if lt IE 7]>
